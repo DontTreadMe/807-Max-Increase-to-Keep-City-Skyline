@@ -3,7 +3,7 @@
  * @return {number}
  */
 var maxIncreaseKeepingSkyline = function(grid) {
-  let topBottom = [], leftRight = [], gridNew = [];
+  let topBottom = [], leftRight = [], gridNew = [], res = 0;
   for (let i = 0; i < grid.length; i++) {
     leftRight.push(Math.max(...grid[i]));
     for (let j = 0; j < grid[i].length; j++) {
@@ -16,9 +16,10 @@ var maxIncreaseKeepingSkyline = function(grid) {
     gridNew[i] = [];
     for (let j = 0; j < grid[i].length; j++) {
       gridNew[i][j] = Math.min(topBottom[j], leftRight[i]);
+      res += gridNew[i][j] - grid[i][j];
     }
   }
-  return gridNew;
+  return res;
   
 };
 
