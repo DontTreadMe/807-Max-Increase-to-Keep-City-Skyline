@@ -12,7 +12,13 @@ var maxIncreaseKeepingSkyline = function(grid) {
       }
     }
   }
-  return [leftRight, topBottom];
+  for (let i = 0; i < grid.length; i++) {
+    gridNew[i] = [];
+    for (let j = 0; j < grid[i].length; j++) {
+      gridNew[i][j] = Math.min(topBottom[j], leftRight[i]);
+    }
+  }
+  return gridNew;
   
 };
 
